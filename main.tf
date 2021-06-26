@@ -25,13 +25,13 @@ module "nginx" {
   instance_type               = "t2.micro"
   key_name                    = var.key_name
   monitoring                  = false
-  vpc_security_group_ids      = var.vpc_security_group_ids["web"]
-  subnet_id                   = var.subnet_ids["nat1"]
+  vpc_security_group_ids      = ["sg-08c2fdb4cbaafe520"]
+  subnet_id                   = "subnet-b3019ed6"
   associate_public_ip_address = true
 
   tags = {
     Terraform   = "true"
-    Environment = var.environment
+    Environment = "cloudj-dev-usw2"
     Role        = "database"
   }
 }
@@ -47,13 +47,13 @@ module "database" {
   instance_type               = "t2.micro"
   key_name                    = var.key_name
   monitoring                  = false
-  vpc_security_group_ids      = var.vpc_security_group_ids["web"]
-  subnet_id                   = var.subnet_ids["nat1"]
+  vpc_security_group_ids      = ["sg-08c2fdb4cbaafe520"]
+  subnet_id                   = "subnet-b3019ed6"
   associate_public_ip_address = true
 
   tags = {
     Terraform   = "true"
-    Environment = var.environment
+    Environment = "cloudj-dev-usw2"
     Role        = "database"
     CIClass     = "compute"
   }
